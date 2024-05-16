@@ -5,7 +5,7 @@
 __global__
 void add(int n, float *x, float *y)
 {
-    int index = threadIdx.x * blockDim.x + threadIdx.x;
+    int index = blockIdx.x * blockDim.x + threadIdx.x;
     int stride = blockDim.x * gridDim.x;
     for (int i = index; i < n; i += stride)
         y[i] = x[i] + y[i];
@@ -16,6 +16,8 @@ int main(void)
     int N = 1<<29; // 1M elements
     int blockSize = 256;
     int numBlocks = (N + blockSize - 1) / blockSize;
+
+    std::cout << "Number of thread blocks: " << numBlocks << std::endl;
 
     float *x, *y;
 
