@@ -11,7 +11,7 @@ void add(int n, float *x, float *y)
 
 int main(void)
 {
-    int N = 1<<29; // 1M elements
+    int N = 1<<29;
 
     float *x = new float[N];
     float *y = new float[N];
@@ -23,7 +23,7 @@ int main(void)
     }
     // insert your timer code here
     std::chrono::time_point<std::chrono::high_resolution_clock> start_time = std::chrono::high_resolution_clock::now();
-    // Run kernel on 1M elements on the CPU
+    
     add(N, x, y);
 
     // insert your end timer code here, and print out elapsed time for this problem size

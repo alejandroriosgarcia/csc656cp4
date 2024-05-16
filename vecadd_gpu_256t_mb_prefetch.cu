@@ -13,7 +13,7 @@ void add(int n, float *x, float *y)
 
 int main(void)
 {
-    int N = 1<<29; // 1M elements
+    int N = 1<<29;
     int blockSize = 256;
     int numBlocks = (N + blockSize - 1) / blockSize;
 
@@ -35,7 +35,7 @@ int main(void)
     cudaMemPrefetchAsync((void *)x, N*sizeof(float), deviceID);
     cudaMemPrefetchAsync((void *)y, N*sizeof(float), deviceID);
     
-    // Run kernel on 1M elements on the GPU
+
 
     add<<<numBlocks, blockSize>>>(N, x, y);
 

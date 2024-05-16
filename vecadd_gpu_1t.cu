@@ -11,7 +11,7 @@ void add(int n, float *x, float *y)
 
 int main(void)
 {
-    int N = 1<<29; // 1M elements
+    int N = 1<<29; 
 
     float *x, *y;
 
@@ -25,7 +25,6 @@ int main(void)
     y[i] = 2.0f;
     }
 
-    // Run kernel on 1M elements on the GPU
     add<<<1, 1>>>(N, x, y);
 
     // Wait for GPU to finish before accessing on host
